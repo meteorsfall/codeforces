@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "" > raw_input
+while IFS= read -r line; do
+    echo "$line" >> raw_input
+done
+

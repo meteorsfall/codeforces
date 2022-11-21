@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+echo "Compiling!"
+g++ -std=c++17 -Wall -DSHOW_DEBUG -pg -g -O0 "$1" -o out
+echo "Compiled!"
+time ./out < raw_input

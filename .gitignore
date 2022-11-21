@@ -1,0 +1,5 @@
+.vscode
+*.swp
+raw_input
+*.out
+out
