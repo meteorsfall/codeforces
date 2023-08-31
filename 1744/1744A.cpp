@@ -33,30 +33,35 @@ int main() {
 
     ll tt;
     cin >> tt;
-    for (ll t = 0; t < tt; t++) {
-        int n, s, r;
-        cin >> n >> s >> r;
-        vector<int> dice(n);
-        dice[0] = s - r;
-        int max = s - r;
-        
-        int difference = (n - 1)*max - r;
-        for (int i = 1; i < n; i++) {
-            if (difference >= max) {
-                dice[i] = 1;
-                difference -= max - 1;
-            } else if (difference > 0) {
-                dice[i] = max - difference;
-                difference = 0;
+    for (ll t = 0; t < tt; t++){
+        int n;
+        cin >> n;
+        vector<int> numbers;
+        for (int i = 0; i < n; i++){
+            int a;
+            cin >> a;
+            numbers.push_back(a);
+        }
+        string s;
+        cin >> s;
+
+        map<int, char> letters;
+        bool success = true;
+        for (int i = 0; i < n; i++){
+            if (letters[numbers[i]] == '\0') {
+                letters[numbers[i]] = s[i];
             } else {
-                dice[i] = max;
+                if (letters[numbers[i]] != s[i]){
+                    success = false;
+                }
             }
         }
-
-        for (int i = 0; i < n; i++) {
-            cout << dice[i] << " ";
+        if (success) {
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
         }
-        cout << endl;
+
     }
 
     return 0;

@@ -33,30 +33,31 @@ int main() {
 
     ll tt;
     cin >> tt;
-    for (ll t = 0; t < tt; t++) {
-        int n, s, r;
-        cin >> n >> s >> r;
-        vector<int> dice(n);
-        dice[0] = s - r;
-        int max = s - r;
-        
-        int difference = (n - 1)*max - r;
-        for (int i = 1; i < n; i++) {
-            if (difference >= max) {
-                dice[i] = 1;
-                difference -= max - 1;
-            } else if (difference > 0) {
-                dice[i] = max - difference;
-                difference = 0;
-            } else {
-                dice[i] = max;
-            }
+    for (ll t = 0; t < tt; t++){
+        int n;
+        cin >> n;
+        vector<int> health;
+        for (int i = 0; i < n; i++){
+            int a;
+            cin >> a;
+            health.push_back(a);
         }
 
-        for (int i = 0; i < n; i++) {
-            cout << dice[i] << " ";
+        sort(health.begin(), health.end());
+        int count = 0;
+        for (int i = 0; i < n - 1; i++) {
+            if (health[i] == 1) {
+                health[i + 1]--;
+                count++;
+            } else if (health[i] > 1) {
+                count++;
+            }
         }
-        cout << endl;
+        if (health[n-1] > 0) {
+            count++;
+        }
+        cout << count << endl;
+
     }
 
     return 0;

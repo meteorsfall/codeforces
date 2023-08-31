@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <algorithm>
+#include <cmath>
+#include <fstream>
+#include <ctime>
+#include <stdio.h>      /* printf */
+#include <stdlib.h>
+#include <queue>
+
+#ifdef SHOW_DEBUG
+#define dbg(a, ...) printf("DEBUG: " a "\n", ##__VA_ARGS__)
+#else
+#define dbg(...) ((void*)(0))
+#endif
+
+using namespace std;
+typedef long long ll;
+template<typename A, typename B>
+using hmap = unordered_map<A, B>;
+typedef tuple<int, int> ii;
+typedef tuple<ll, ll> lii;
+#define PI 3.14159265358979323846
+#define inf 0x3f3f3f3f
+#define infl 0x3f3f3f3f3f3f3f3fL
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    ll tt;
+    cin >> tt;
+    for (ll t = 0; t < tt; t++){
+        ll n, m;
+        cin >> n >> m;
+        vector<ll> meals;
+        for (ll i = 0; i < n; i++){
+            ll a;
+            cin >> a;
+            meals.push_back(a);
+        }
+        vector<ll> tables;
+        for (ll i = 0; i < n; i++){
+            ll a;
+            cin >> a;
+            tables.push_back(a);
+        }
+        sort(tables.begin(), tables.end());
+
+        sort(meals.begin(), meals.end());
+        vector<ll> buckets;
+        ll running_meal = meals[0];
+        ll running_sum = 1;
+        for (ll i = 1; i < n; i++){
+            if (meals[i] == running_meal) {
+                running_sum++;
+            } else {
+                buckets.push_back(running_sum);
+                running_sum = 1;
+                running_meal = meals[i];
+            }
+        }
+        buckets.push_back(running_sum);
+        sort(buckets.begin(), buckets.end());
+
+        for (ll i = buckets.size() - 1; i >= 0; i--) {
+            // match
+        }
+    }
+
+    return 0;
+}

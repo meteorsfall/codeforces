@@ -33,28 +33,33 @@ int main() {
 
     ll tt;
     cin >> tt;
-    for (ll t = 0; t < tt; t++) {
-        int n, s, r;
-        cin >> n >> s >> r;
-        vector<int> dice(n);
-        dice[0] = s - r;
-        int max = s - r;
-        
-        int difference = (n - 1)*max - r;
-        for (int i = 1; i < n; i++) {
-            if (difference >= max) {
-                dice[i] = 1;
-                difference -= max - 1;
-            } else if (difference > 0) {
-                dice[i] = max - difference;
-                difference = 0;
-            } else {
-                dice[i] = max;
+    for (ll t = 0; t < tt; t++){
+        ll n;
+        cin >> n;
+        vector<ll> array;
+        for (ll i = 0; i < n; i++){
+            ll a;
+            cin >> a;
+            array.push_back(a);
+        }
+
+        ll ops_used = 0;
+        for (ll i = 0; i < n; i++){
+            if (array[i] == 1){
+                array[i]++;
+                ops_used++;
+            }
+            if (i == 0){
+                continue;
+            }
+            if (array[i] % array[i-1] == 0){
+                array[i]++;
+                ops_used++;
             }
         }
 
-        for (int i = 0; i < n; i++) {
-            cout << dice[i] << " ";
+        for (ll i = 0; i < n; i++){
+            cout << array[i] << " ";
         }
         cout << endl;
     }

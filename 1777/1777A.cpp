@@ -31,32 +31,28 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    ll tt;
+    int tt;
     cin >> tt;
-    for (ll t = 0; t < tt; t++) {
-        int n, s, r;
-        cin >> n >> s >> r;
-        vector<int> dice(n);
-        dice[0] = s - r;
-        int max = s - r;
+    for (int t = 0; t < tt; t++) {
+        int n;
+        cin >> n;
+        vector<ll> parities;
+        for (int i = 0; i < n; i++) {
+            ll a;
+            cin >> a;
+            parities.push_back(a);
+        }
         
-        int difference = (n - 1)*max - r;
+        ll parity = parities[0] % 2;
+        ll min_ops = 0;
         for (int i = 1; i < n; i++) {
-            if (difference >= max) {
-                dice[i] = 1;
-                difference -= max - 1;
-            } else if (difference > 0) {
-                dice[i] = max - difference;
-                difference = 0;
+            if ( (parities[i] % 2) == parity ){
+                min_ops++;
             } else {
-                dice[i] = max;
+                parity = parities[i] % 2;
             }
         }
-
-        for (int i = 0; i < n; i++) {
-            cout << dice[i] << " ";
-        }
-        cout << endl;
+        cout << min_ops << endl;
     }
 
     return 0;

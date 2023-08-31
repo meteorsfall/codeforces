@@ -31,30 +31,20 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    ll tt;
+    int tt;
     cin >> tt;
-    for (ll t = 0; t < tt; t++) {
-        int n, s, r;
-        cin >> n >> s >> r;
-        vector<int> dice(n);
-        dice[0] = s - r;
-        int max = s - r;
-        
-        int difference = (n - 1)*max - r;
-        for (int i = 1; i < n; i++) {
-            if (difference >= max) {
-                dice[i] = 1;
-                difference -= max - 1;
-            } else if (difference > 0) {
-                dice[i] = max - difference;
-                difference = 0;
-            } else {
-                dice[i] = max;
-            }
+    for (int t = 0; t < tt; t++){
+        string s;
+        cin >> s;
+        vector<char> palindrome;
+        for (int i = 0; i < s.length(); i++){
+            palindrome.push_back(s[i]);
         }
-
-        for (int i = 0; i < n; i++) {
-            cout << dice[i] << " ";
+        for (int i = 0; i < s.length(); i++){
+            palindrome.push_back(s[s.length() - 1 - i]);
+        }
+        for (int i = 0; i < palindrome.size(); i++) {
+            cout << palindrome[i];
         }
         cout << endl;
     }

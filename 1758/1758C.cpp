@@ -27,36 +27,36 @@ typedef tuple<ll, ll> lii;
 #define inf 0x3f3f3f3f
 #define infl 0x3f3f3f3f3f3f3f3fL
 
+
+ll factor(ll a) {
+
+}
+
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    ll tt;
+    int tt;
     cin >> tt;
-    for (ll t = 0; t < tt; t++) {
-        int n, s, r;
-        cin >> n >> s >> r;
-        vector<int> dice(n);
-        dice[0] = s - r;
-        int max = s - r;
-        
-        int difference = (n - 1)*max - r;
-        for (int i = 1; i < n; i++) {
-            if (difference >= max) {
-                dice[i] = 1;
-                difference -= max - 1;
-            } else if (difference > 0) {
-                dice[i] = max - difference;
-                difference = 0;
-            } else {
-                dice[i] = max;
+    for (int t = 0; t < tt; t++){
+        ll n, x;
+        cin >> n >> x;
+        vector<ll> funny;
+        for (int i = 0; i < n; i++){
+            funny.push_back(i+1);
+        }
+        funny[0] = x;
+        funny[n-1] = 1;
+        if (n % x == 0) {
+            funny[x - 1] = n;
+            
+            for (int i = 0; i < n - 1; i++) {
+                cout << funny[i] << " ";
             }
+            cout << funny[n-1] << endl;
+        } else {
+            cout << -1;
         }
-
-        for (int i = 0; i < n; i++) {
-            cout << dice[i] << " ";
-        }
-        cout << endl;
     }
 
     return 0;
