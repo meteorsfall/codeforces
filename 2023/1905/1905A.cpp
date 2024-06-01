@@ -31,7 +31,13 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    
+    ll tt;
+    cin >> tt;
+    for (ll t = 0; t < tt; t++){
+        ll n, m;
+        cin >> n >> m;
+        cout << max(n, m) << endl;
+    }
 
     return 0;
 }

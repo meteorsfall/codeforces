@@ -31,7 +31,19 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    
+    ll tt;
+    cin >> tt;
+    for (ll t = 0; t < tt; t++){
+        ll n;
+        cin >> n;
+        vector<ll> arr(n);
+        for (ll i = 0; i < n; i++){
+            cin >> arr[i];
+        }
+
+        
+
+    }
 
     return 0;
 }
